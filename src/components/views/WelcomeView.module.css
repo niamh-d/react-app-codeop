@@ -6,7 +6,7 @@
 
 .welcome-screen::before {
   content: "";
-  background-image: url("../../imgs/welcome-image.png");
+  background-image: var(--welcome-image-source);
   background-size: cover;
   position: absolute;
   top: 0px;

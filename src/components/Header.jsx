@@ -1,16 +1,13 @@
 import ThemeSelector from "./ThemeSelector";
 
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-
 import User from "./User";
 import Button from "./Button";
+import HeaderIconsBox from "./HeaderIconsBox";
 
 import { useProjects } from "../contexts/ProjectsContext";
 
-import Tooltip from "@mui/material/Tooltip";
-
 function Header() {
-  const { dispatch } = useProjects();
+  const { dispatch, isEditorMode } = useProjects();
 
   const onLogOut = () => {
     dispatch({ type: "logOut" });
@@ -18,12 +15,10 @@ function Header() {
 
   return (
     <header className="flex">
-      <h1>Your Portfolio</h1>
+      <h1>{isEditorMode ? "Editor Mode" : "Your Portfolio"}</h1>
       <div className="flex gap-8">
         <User />
-        <Tooltip title="Add new project">
-          <AddCircleIcon />
-        </Tooltip>
+        <HeaderIconsBox />
         <Button type="btn-info" text="Log out" handleClick={onLogOut} />
       </div>
       <ThemeSelector />

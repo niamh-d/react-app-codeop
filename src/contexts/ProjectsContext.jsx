@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
+import { FastRewind } from "@mui/icons-material";
 import { createContext, useContext, useReducer } from "react";
 
 const ProjectsContext = createContext();
 
 const initialState = {
   projects: [],
-  isAdmin: false,
-  status: "",
   isLoggedIn: false,
   isDark: false,
+  isEditorMode: false,
+  isEditProjectView: false,
+  projectBeingEditedId: "",
 };
 
 function ProjectsProvider({ children }) {
@@ -17,14 +19,19 @@ function ProjectsProvider({ children }) {
       case "logIn":
         return {
           ...state,
-          status: "ready",
           isLoggedIn: true,
         };
       case "logOut":
         return {
           ...state,
-          status: "",
           isLoggedIn: false,
+          isEditorMode: false,
+          isEditProjectView: false,
+        };
+      case "enableEditor":
+        return {
+          ...state,
+          isEditorMode: true,
         };
       case "toggleDark":
         const mode = !state.isDark;
@@ -32,24 +39,43 @@ function ProjectsProvider({ children }) {
           ...state,
           isDark: mode,
         };
+      case "deleteProject":
+        return {
+          ...state,
+          projects: state.projects.filter(
+            (project) => project.id !== action.payload
+          ),
+        };
+      case "editProject":
+        return {
+          ...state,
+          isEditProjectView: true,
+          projectBeingEditedId: action.payload,
+        };
       case "dataReceived":
         return {
           ...state,
           projects: action.payload,
-          status: "ready",
         };
       case "dataFailed":
-        return {
-          ...state,
-          status: "error",
-        };
+        throw new Error(action.payload);
       default:
         throw new Error("Action unknown");
     }
   }
 
-  const [{ projects, isAdmin, status, isLoggedIn, isDark }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    {
+      projects,
+      status,
+      isLoggedIn,
+      isDark,
+      isEditorMode,
+      isEditProjectView,
+      projectBeingEditedId,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   return (
     <ProjectsContext.Provider
@@ -59,6 +85,9 @@ function ProjectsProvider({ children }) {
         status,
         isLoggedIn,
         isDark,
+        isEditorMode,
+        isEditProjectView,
+        projectBeingEditedId,
       }}
     >
       {children}

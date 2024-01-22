@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+[data-welcome-image="woman-camera"] {
+  --welcome-image-source: url(imgs/woman-camera.png);
+}
+
+[data-welcome-image="kid-playing"] {
+  --welcome-image-source: url(imgs/kid-playing.jpg);
+}
+
+[data-welcome-image="man-garden"] {
+  --welcome-image-source: url(imgs/man-garden.jpeg);
+}
+
+[data-welcome-image="dog"] {
+  --welcome-image-source: url(imgs/dog.jpeg);
+}
+
+[data-welcome-image="couple-sea"] {
+  --welcome-image-source: url(imgs/couple-sea.jpeg);
+}
+
 @layer base {
   html {
     font-family: "Proxima Nova", system-ui, sans-serif;
@@ -54,6 +74,11 @@
   footer {
     @apply mt-10;
   }
+
+  svg {
+    cursor: pointer;
+  }
+
   .flex {
     display: flex;
     align-items: center;
@@ -154,6 +179,10 @@
     border-bottom: solid 1px;
     width: 50%;
     align-self: self-end;
+  }
+
+  .container-editor {
+    max-width: 70rem;
   }
 
   @keyframes moveInBottom {

@@ -1,26 +1,27 @@
 import React from "react";
 
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import Tooltip from "@mui/material/Tooltip";
+import ProjectIconsBox from "./ProjectIconsBox";
+
+import { useProjects } from "../contexts/ProjectsContext";
 
 const Project = ({ data }) => {
+  const { dispatch } = useProjects();
   const { title, description, source, id } = data;
+
+  const onDeleteProject = () => {
+    dispatch({ type: "deleteProject", payload: id });
+  };
+
+  const onEditProject = () => {
+    dispatch({ type: "editProject", payload: id });
+  };
 
   return (
     <>
-      <div className="icons-box">
-        <Tooltip title="Select as Favourite">
-          <FavoriteBorderOutlinedIcon />
-        </Tooltip>
-        <Tooltip title="Edit details">
-          <EditOutlinedIcon />
-        </Tooltip>
-        <Tooltip title="Delete">
-          <DeleteOutlinedIcon />
-        </Tooltip>
-      </div>
+      <ProjectIconsBox
+        onDeleteHandler={onDeleteProject}
+        onEditHandler={onEditProject}
+      />
       <div>
         <h3 className="text-lg font-bold mt-2 mb-3">{title}</h3>
         <img className="pd-5" src={source} />

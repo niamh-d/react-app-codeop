@@ -5,7 +5,7 @@ import { useProjects } from "../../contexts/ProjectsContext";
 import Card from "../Card";
 import Project from "../Project";
 
-function UserView() {
+function GalleryView() {
   const { projects } = useProjects();
 
   return (
@@ -19,4 +19,4 @@ function UserView() {
   );
 }
 
-export default UserView;
+export default GalleryView;
