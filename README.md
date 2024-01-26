@@ -6,6 +6,12 @@ The name _töödo äpp_ is a joke that Estonians 🇪🇪 will understand. _Tö�
 
 Niiv Dev OÜ is a fictional company. This is a practice React project coded up for an assignment as part of the CodeOp fullstack bootcamp.
 
+## Demo
+
+At the link below you can watch a short demo of the app:
+
+[Video demo of app](https://x.com/niamh_codes/status/1750861943877824533?s=20)
+
 ## How to run
 
 In one terminal
