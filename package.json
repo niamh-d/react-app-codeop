@@ -1,6 +1,7 @@
 {
-  "name": "react-portfolio",
+  "name": "react-to-do-app",
   "private": true,
+  "author": "Niamh Doyle",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
