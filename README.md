@@ -90,3 +90,9 @@ From the archive to dos can be deleted permanently or restored to the main todo 
 Theme changer is contained in a drawer
 
 ![Theme changer](imgs/statistics-sunset-theme.png)
+
+### Local storage
+
+The app makes use of local storage to persist crucial state (todos and stats) and less crucial (user details, selected theme).
+
+![Local storage](imgs/local-storage.png)
