@@ -21,7 +21,7 @@ const ToDo = ({ toDo }) => {
           onClick={() =>
             dispatch({
               type: "archiveTodo",
-              payload: toDo.id
+              payload: toDo.id,
             })
           }
         />
@@ -40,8 +40,8 @@ const ToDo = ({ toDo }) => {
                   type: "updateStatus",
                   payload: {
                     id: toDo.id,
-                    status: "in-progress"
-                  }
+                    status: "in-progress",
+                  },
                 })
               }
             />
@@ -64,7 +64,7 @@ const ToDo = ({ toDo }) => {
               onClick={() =>
                 dispatch({
                   type: "updateStatus",
-                  payload: { id: toDo.id, status: "completed" }
+                  payload: { id: toDo.id, status: "completed" },
                 })
               }
             />
@@ -76,8 +76,8 @@ const ToDo = ({ toDo }) => {
                   type: "updateStatus",
                   payload: {
                     id: toDo.id,
-                    status: "new"
-                  }
+                    status: "new",
+                  },
                 })
               }
             />
@@ -85,7 +85,6 @@ const ToDo = ({ toDo }) => {
           <span className="ml-5 p-2 font-bold underline decoration-orange-600 decoration-4 underline-offset-2">
             {toDo.title}
           </span>
-          <span>Added {toDo.ad}</span>
         </>
       )}
 
@@ -96,7 +95,7 @@ const ToDo = ({ toDo }) => {
               onClick={() =>
                 dispatch({
                   type: "updateStatus",
-                  payload: { id: toDo.id, status: "in-progress" }
+                  payload: { id: toDo.id, status: "in-progress" },
                 })
               }
             />
